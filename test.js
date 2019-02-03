@@ -11,6 +11,6 @@ async function main() {
 
   const updated_network = idAreas(geojson);
 
-  await fs.writeFile('./done_network.geojson', JSON.stringify(updated_network), 'utf8');
+  await fs.writeFile('./altered_network.geojson', JSON.stringify(updated_network), 'utf8');
 
 }

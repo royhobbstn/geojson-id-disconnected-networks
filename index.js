@@ -14,8 +14,6 @@ function idAreas(geo) {
   const graph = {};
   const all_points = {};
 
-  console.log('adding nodes to network');
-
   features.forEach(feature => {
     const first_pt = feature.geometry.coordinates[0].join(',');
     const last_pt = feature.geometry.coordinates[feature.geometry.coordinates.length - 1].join(',');
@@ -36,17 +34,13 @@ function idAreas(geo) {
     all_points[last_pt] = '';
   });
 
-  console.log('done adding nodes to network');
-
   let network_iteration = 0;
   let keys = getKeys(all_points);
 
   const subnetworks = [];
 
   do {
-    console.log(`walking network #${network_iteration + 1}`);
     const traveled_nodes = dijkstra(graph, keys[0], keys[1]);
-    console.log(traveled_nodes.length);
 
     // TODO edge cases:  what if we picked nodes that are on different subnetworks?
 

@@ -20,12 +20,41 @@ If you map the updated dataset by `subnetworkId` categorically, you will get a r
 
 # Install
 
-// TODO
+```
+npm install geojson-id-disconnected-networks
+```
+
+Then:
+
+```
+
+const fs = require('fs').promises;
+const idAreas = require('geojson-id-disconnected-networks');
+
+
+main();
+
+async function main() {
+
+  const geojson_raw = await fs.readFile('./full_network.geojson');
+  const geojson = JSON.parse(geojson_raw);
+
+  const altered_network = idAreas(geojson);
+  
+  // altered_network contains a new geojson property; subnetworkId
+
+  await fs.writeFile('./altered_network.geojson', JSON.stringify(updated_network), 'utf8');
+
+}
+
+```
 
 # How It Works
 
-This library uses Dijkstras algorithm to travel the network between an origin and a destination.  Because the algorithm travels each possible node along the way, by keeping track of the nodes traveled on we can get a full accounting of each sub-network.
+This library uses [Dijkstra's Algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) to travel the network between an origin and a destination.  Because the algorithm travels each possible node along the way, by keeping track of the nodes traveled we can get a full accounting of each sub-network.
 
 # Credits
 
-// TODO
+I'm greatly indebted to the work of Stella Chung, who created [a very approachable guide](https://hackernoon.com/how-to-implement-dijkstras-algorithm-in-javascript-abdfd1702d04) to implementing Dijkstra's Algorithm in JavaScript.
+
+You can follow her [@stellasometimes](https://twitter.com/stellasometimes) on Twitter.
