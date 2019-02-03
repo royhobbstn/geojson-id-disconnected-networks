@@ -1,4 +1,6 @@
 
+const dijkstra = require('./dijkstra/algorithm');
+
 module.exports = idAreas;
 
 exports.idAreas = idAreas;
@@ -39,59 +41,5 @@ function idAreas(geo) {
 }
 
 
-function dijkstra(graph, startNode, endNode, debugFlag) {
 
-  // track lowest cost to reach each node
-  const trackedCosts = Object.assign({[endNode]: Infinity}, graph[startNode]);
-
-  // track paths
-  const trackedParents = {[endNode]: null};
-  for (let child in graph[startNode]) {
-    trackedParents[child] = startNode;
-  }
-
-  // track nodes that have already been processed
-  const processedNodes = [];
-
-  // Set initial node. Pick lowest cost node.
-  let node = findLowestCostNode(trackedCosts, processedNodes);
-
-  while (node) {
-
-    let costToReachNode = trackedCosts[node];
-    let childrenOfNode = graph[node];
-
-    for (let child in childrenOfNode) {
-      let costFromNodetoChild = childrenOfNode[child];
-      let costToChild = costToReachNode + costFromNodetoChild;
-
-      if (!trackedCosts[child] || trackedCosts[child] > costToChild) {
-        trackedCosts[child] = costToChild;
-        trackedParents[child] = node;
-      }
-    }
-
-    processedNodes.push(node);
-
-    node = findLowestCostNode(trackedCosts, processedNodes);
-  }
-
-  return processedNodes;
-}
-
-function findLowestCostNode(costs, processed){
-
-  const knownNodes = Object.keys(costs);
-
-  return knownNodes.reduce((lowest, node) => {
-    if (lowest === null && !processed.includes(node)) {
-      lowest = node;
-    }
-    if (costs[node] < costs[lowest] && !processed.includes(node)) {
-      lowest = node;
-    }
-    return lowest;
-  }, null);
-
-}
 
