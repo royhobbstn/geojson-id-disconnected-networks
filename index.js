@@ -42,6 +42,8 @@ function idAreas(geo) {
   do {
     const traveled_nodes = dijkstra(graph, keys[0], keys[1]);
 
+    // TODO edge cases:  what if we picked nodes that are on different subnetworks?
+
     subnetworks.push({name: network_iteration, size: traveled_nodes.length});
 
     traveled_nodes.forEach(node => {
