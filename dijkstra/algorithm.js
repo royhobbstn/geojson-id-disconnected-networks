@@ -10,12 +10,6 @@ function dijkstra(graph, startNode, endNode) {
   // track lowest cost to reach each node
   const trackedCosts = Object.assign({[endNode]: Infinity}, graph[startNode]);
 
-  // track paths
-  const trackedParents = {[endNode]: null};
-  for (let child in graph[startNode]) {
-    trackedParents[child] = startNode;
-  }
-
   // track nodes that have already been processed
   const processedNodes = [];
 
@@ -33,7 +27,6 @@ function dijkstra(graph, startNode, endNode) {
 
       if (!trackedCosts[child] || trackedCosts[child] > costToChild) {
         trackedCosts[child] = costToChild;
-        trackedParents[child] = node;
       }
     }
 
