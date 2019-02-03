@@ -1,0 +1,19 @@
+{
+  "name": "geojson-id-disconnected-networks",
+  "version": "1.0.0",
+  "description": "In a GeoJSON LineString Feature Collection, Identify network areas separate from each other.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royhobbstn/geojson-id-disconnected-networks.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royhobbstn/geojson-id-disconnected-networks/issues"
+  },
+  "homepage": "https://github.com/royhobbstn/geojson-id-disconnected-networks#readme"
+}

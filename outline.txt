@@ -1,0 +1,33 @@
+
+
+// create network from geojson
+
+// create a object hash of all points
+
+
+// LOOP
+
+// pick first point and last point
+
+// call this network A
+
+// run path through Djikstra
+
+// - handle if no path found: probably pick next two points?
+
+// get list of used points
+
+// assign all of these points to Network A in the object hash
+
+// loop through object hash, if undefined points remaining, choose first 2 unused points
+
+//  - if 1 unused point remaining, handle this
+
+// run through // LOOP
+
+// count number of points in each network.  Order networks by size of points in each
+
+// - example Network B is biggest, becomes __order: 1, network A is second biggest, becomes __order: 2
+
+// return geojson to user with this extra column
+
