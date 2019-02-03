@@ -11,12 +11,18 @@ function dijkstra(graph, startNode, endNode) {
   const trackedCosts = Object.assign({[endNode]: Infinity}, graph[startNode]);
 
   // track nodes that have already been processed
-  const processedNodes = [];
+  const processedNodes = {};
 
   // Set initial node. Pick lowest cost node.
-  let node = findLowestCostNode(trackedCosts, processedNodes);
+  let node = findNextNode(trackedCosts, processedNodes);
+
+  let iter = 0;
 
   while (node) {
+    iter++;
+    console.log(`${iter} times through while loop`);
+
+    console.time('coreWhile');
 
     let costToReachNode = trackedCosts[node];
     let childrenOfNode = graph[node];
@@ -30,26 +36,27 @@ function dijkstra(graph, startNode, endNode) {
       }
     }
 
-    processedNodes.push(node);
+    processedNodes[node] = true;
 
-    node = findLowestCostNode(trackedCosts, processedNodes);
+    console.timeEnd('coreWhile');
+
+
+    console.time('loop');
+    node = findNextNode(trackedCosts, processedNodes);
+    console.timeEnd('loop');
   }
 
-  return processedNodes;
+  return Object.keys(processedNodes);
 }
 
-function findLowestCostNode(costs, processed){
-
+function findNextNode(costs, processed){
   const knownNodes = Object.keys(costs);
 
-  return knownNodes.reduce((lowest, node) => {
-    if (lowest === null && !processed.includes(node)) {
-      lowest = node;
+  for(let node of knownNodes) {
+    if(!processed[node]) {
+      return node;
     }
-    if (costs[node] < costs[lowest] && !processed.includes(node)) {
-      lowest = node;
-    }
-    return lowest;
-  }, null);
+  }
 
+  return null;
 }
