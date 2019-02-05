@@ -20,9 +20,6 @@ function dijkstra(graph, startNode, endNode) {
 
   while (node) {
     iter++;
-    console.log(`${iter} times through while loop`);
-
-    console.time('coreWhile');
 
     let costToReachNode = trackedCosts[node];
     let childrenOfNode = graph[node];
@@ -38,12 +35,7 @@ function dijkstra(graph, startNode, endNode) {
 
     processedNodes[node] = true;
 
-    console.timeEnd('coreWhile');
-
-
-    console.time('loop');
     node = findNextNode(trackedCosts, processedNodes);
-    console.timeEnd('loop');
   }
 
   return Object.keys(processedNodes);

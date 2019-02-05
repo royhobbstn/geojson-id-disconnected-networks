@@ -1,6 +1,6 @@
 {
   "name": "geojson-id-disconnected-networks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "In a GeoJSON LineString Feature Collection, Identify network areas separate from each other.",
   "main": "index.js",
   "scripts": {
