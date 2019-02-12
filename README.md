@@ -1,6 +1,7 @@
 # geojson-id-disconnected-networks
 In a GeoJSON LineString Feature Collection, Identify network areas separate from each other.
 
+Note:  I'd advise using the `connectedComponents` export from [geojson-to-adjacency-list](https://github.com/royhobbstn/geojson-to-adjacency-list) for a more classic approach to this task.
 
 ## When to Use
 
